@@ -34,8 +34,10 @@ const ProductItem = (props) => {
 
 const styles = StyleSheet.create({
   product: {
-    height: 120,
+    height: 135,
     backgroundColor: "white",
+    borderBottomColor: "#ccc",
+    borderBottomWidth: 1,
   },
   touchable: {
     overflow: "hidden",
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: "35%",
     height: "100%",
-    padding: 13,
+    padding: 18,
     overflow: "hidden",
   },
   image: {
