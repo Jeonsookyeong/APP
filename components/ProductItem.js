@@ -13,7 +13,7 @@ const ProductItem = (props) => {
       <View style={styles.touchable}>
         <TouchableNativeFeedback
           background={TouchableNativeFeedback.Ripple("white")}
-          onPress={() => {}}
+          onPress={props.onSelect}
           useForeground
         >
           <View style={styles.container}>

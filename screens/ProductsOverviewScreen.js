@@ -15,6 +15,15 @@ const ProductsOverviewScreen = (props) => {
           title={itemData.item.title}
           createdAt={itemData.item.createdAt}
           price={itemData.item.price}
+          onSelect={() => {
+            props.navigation.navigate("ProductDetailScreen", {
+              productImage: itemData.item.imageUrl,
+              productOwnerId: itemData.item.ownerId,
+              productTitle: itemData.item.title,
+              productDescription: itemData.item.description,
+              productPrice: itemData.item.price,
+            });
+          }}
         ></ProductItem>
       )}
     />

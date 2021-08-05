@@ -7,6 +7,8 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
 
+import { HeaderBackButton } from "@react-navigation/elements";
+
 import ProductsOverviewScreen from "../screens/ProductsOverviewScreen";
 import ProductDetailScreeen from "../screens/ProductDetailScreen";
 import Screen from "../screens/Screen";
@@ -15,7 +17,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 const ProductsStackNavigator = createStackNavigator();
 
-export const ProductStackNavigator = () => {
+export const ProductStackNavigator = (props) => {
   return (
     <ProductsStackNavigator.Navigator>
       <ProductsStackNavigator.Screen
@@ -62,6 +64,29 @@ export const ProductStackNavigator = () => {
       <ProductsStackNavigator.Screen
         name="ProductDetailScreen"
         component={ProductDetailScreeen}
+        options={{
+          headerTransparent: true,
+          headerTitle: "",
+          headerLeft: () => (
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+              <HeaderBackButton
+                tintColor="white"
+                onPress={() => {
+                  props.navigation.goBack();
+                }}
+              />
+              <Item
+                title="home"
+                color="white"
+                iconName="home-outline"
+                iconSize={26}
+                onPress={() => {
+                  props.navigation.navigate("ProductsOverviewScreen");
+                }}
+              />
+            </HeaderButtons>
+          ),
+        }}
       />
     </ProductsStackNavigator.Navigator>
   );
@@ -123,21 +148,36 @@ export const BottomTabNavigator = () => {
   return (
     <NavigationContainer>
       <BottomTabsbNavigator.Navigator
-        screenOptions={{
+        screenOptions={({ route }) => ({
           headerShown: false,
-        }}
+
+          tabBarIcon: ({ focused }) => {
+            let iconName;
+
+            if (route.name === "홈") {
+              iconName = focused ? "home-sharp" : "home-outline";
+            } else if (route.name === "동네생활") {
+              iconName = focused ? "newspaper" : "newspaper-outline";
+            } else if (route.name === "내 근처") {
+              iconName = focused ? "location" : "location-outline";
+            } else if (route.name === "채팅") {
+              iconName = focused ? "chatbubbles-sharp" : "chatbubbles-outline";
+            } else if (route.name === "나의 당근") {
+              iconName = focused ? "person-sharp" : "person-outline";
+            }
+
+            return <Ionicons name={iconName} size={25} />;
+          },
+        })}
         barStyle={{ backgroundColor: "white" }}
         shifting={false}
-        // inactiveColor='black'
+        inactiveColor="black"
       >
         <BottomTabsbNavigator.Screen
           name="홈"
           component={ProductStackNavigator}
           options={{
             tabBarLabel: "홈",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="home-outline" size={25} /> //home-sharp
-            ),
           }}
         />
         <BottomTabsbNavigator.Screen
@@ -145,9 +185,6 @@ export const BottomTabNavigator = () => {
           component={ScreenStackNavigator}
           options={{
             tabBarLabel: "동네생활",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="newspaper-outline" size={25} /> //newspaper
-            ),
           }}
         />
         <BottomTabsbNavigator.Screen
@@ -155,9 +192,6 @@ export const BottomTabNavigator = () => {
           component={ScreenStackNavigator}
           options={{
             tabBarLabel: "내 근처",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="location-outline" size={25} /> //location
-            ),
           }}
         />
         <BottomTabsbNavigator.Screen
@@ -165,9 +199,6 @@ export const BottomTabNavigator = () => {
           component={ScreenStackNavigator}
           options={{
             tabBarLabel: "채팅",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="chatbubbles-outline" size={25} /> //chatbubbles-sharp
-            ),
           }}
         />
         <BottomTabsbNavigator.Screen
@@ -175,9 +206,6 @@ export const BottomTabNavigator = () => {
           component={ScreenStackNavigator}
           options={{
             tabBarLabel: "나의 당근",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="md-person-outline" size={25} /> //md-person-sharp
-            ),
           }}
         />
       </BottomTabsbNavigator.Navigator>
