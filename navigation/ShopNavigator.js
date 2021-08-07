@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, Platform } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
@@ -14,6 +14,7 @@ import ProductDetailScreeen from "../screens/ProductDetailScreen";
 import Screen from "../screens/Screen";
 
 import { Ionicons } from "@expo/vector-icons";
+import MyCarrot from "../screens/MyCarrot";
 
 const ProductsStackNavigator = createStackNavigator();
 
@@ -65,6 +66,15 @@ export const ProductStackNavigator = (props) => {
         name="ProductDetailScreen"
         component={ProductDetailScreeen}
         options={{
+          tabBarIcon: ({ focused }) => {
+            let iconName;
+
+            if (route.name === "ProductDetailScreen") {
+              iconName = focused ? "" : "";
+            }
+            return <Ionicons name={iconName} size={25} />;
+          },
+
           headerTransparent: true,
           headerTitle: "",
           headerLeft: () => (
@@ -92,6 +102,31 @@ export const ProductStackNavigator = (props) => {
   );
 };
 
+const MyCarrotsStacksNavigator = createStackNavigator();
+
+export const MyCarrotStackNavigator = () => {
+  return (
+    <MyCarrotsStacksNavigator.Navigator>
+      <MyCarrotsStacksNavigator.Screen
+        name="My Carrot"
+        component={MyCarrot}
+        options={{
+          title: <Text style={styles.Header}>나의 당근</Text>,
+          headerRight: () => (
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+              <Item
+                title="notice"
+                iconName="settings-outline"
+                iconSize={26}
+                onPress={() => {}}
+              />
+            </HeaderButtons>
+          ),
+        }}
+      />
+    </MyCarrotsStacksNavigator.Navigator>
+  );
+};
 const ScreensStackNavigator = createStackNavigator();
 
 export const ScreenStackNavigator = () => {
@@ -203,7 +238,7 @@ export const BottomTabNavigator = () => {
         />
         <BottomTabsbNavigator.Screen
           name="나의 당근"
-          component={ScreenStackNavigator}
+          component={MyCarrotStackNavigator}
           options={{
             tabBarLabel: "나의 당근",
           }}
