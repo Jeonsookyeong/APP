@@ -12,6 +12,7 @@ import { HeaderBackButton } from "@react-navigation/elements";
 import ProductsOverviewScreen from "../screens/ProductsOverviewScreen";
 import ProductDetailScreeen from "../screens/ProductDetailScreen";
 import Screen from "../screens/Screen";
+import FavoriteScreen from "../screens/FavoriteScreen";
 
 import { Ionicons } from "@expo/vector-icons";
 import MyCarrot from "../screens/MyCarrot";
@@ -122,6 +123,14 @@ export const MyCarrotStackNavigator = () => {
               />
             </HeaderButtons>
           ),
+        }}
+      />
+
+      <MyCarrotsStacksNavigator.Screen
+        name="FavoriteScreen"
+        component={FavoriteScreen}
+        options={{
+          title: <Text style={styles.Header}>관심목록</Text>,
         }}
       />
     </MyCarrotsStacksNavigator.Navigator>

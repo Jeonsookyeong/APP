@@ -5,10 +5,10 @@ import {
   ScrollView,
   View,
   StyleSheet,
-  Button,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-const MyCarrot = () => {
+
+const MyCarrot = (props) => {
   return (
     <ScrollView style={{ backgroundColor: "white" }}>
       <View style={styles.owner}>
@@ -38,7 +38,9 @@ const MyCarrot = () => {
               }}
             >
               <Ionicons name="list-circle-outline" size={55} />
-              <Text style={{ textAlign: "center", fontSize: 15 }}>판매내역</Text>
+              <Text style={{ textAlign: "center", fontSize: 15 }}>
+                판매내역
+              </Text>
             </View>
           </TouchableNativeFeedback>
           <TouchableNativeFeedback>
@@ -50,11 +52,17 @@ const MyCarrot = () => {
               }}
             >
               <Ionicons name="information-circle-outline" size={55} />
-              <Text style={{ textAlign: "center", fontSize: 15 }}>구매내역</Text>
+              <Text style={{ textAlign: "center", fontSize: 15 }}>
+                구매내역
+              </Text>
             </View>
           </TouchableNativeFeedback>
 
-          <TouchableNativeFeedback>
+          <TouchableNativeFeedback
+            onPress={() => {
+              props.navigation.navigate("FavoriteScreen");
+            }}
+          >
             <View
               style={{
                 width: 110,
@@ -63,7 +71,9 @@ const MyCarrot = () => {
               }}
             >
               <Ionicons name="heart-circle-outline" size={55} />
-              <Text style={{ textAlign: "center", fontSize: 15 }}>관심목록</Text>
+              <Text style={{ textAlign: "center", fontSize: 15 }}>
+                관심목록
+              </Text>
             </View>
           </TouchableNativeFeedback>
         </View>
