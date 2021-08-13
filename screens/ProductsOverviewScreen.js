@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import PRODUCTS from "../data/dummy-data";
 import ProductItem from "../components/ProductItem";
@@ -33,6 +33,7 @@ const ProductsOverviewScreen = (props) => {
           )}
         />
       }
+
       <ActionButton buttonColor="#FF8000">
         <ActionButton.Item
           buttonColor="#FF8000"
@@ -45,7 +46,9 @@ const ProductsOverviewScreen = (props) => {
         <ActionButton.Item
           buttonColor="#FF8000"
           title="중고거래"
-          onPress={() => {}}
+          onPress={() => {
+            props.navigation.navigate("UsedTransactionScreen");
+          }}
         >
           <Icon name="pencil" style={styles.actionButtonIcon} />
         </ActionButton.Item>

@@ -13,6 +13,7 @@ import ProductsOverviewScreen from "../screens/ProductsOverviewScreen";
 import ProductDetailScreeen from "../screens/ProductDetailScreen";
 import Screen from "../screens/Screen";
 import FavoriteScreen from "../screens/FavoriteScreen";
+import UsedTransactionScreen from "../screens/UsedTransactionScreen";
 
 import { Ionicons } from "@expo/vector-icons";
 import MyCarrot from "../screens/MyCarrot";
@@ -93,6 +94,33 @@ export const ProductStackNavigator = (props) => {
                 iconSize={26}
                 onPress={() => {
                   props.navigation.navigate("ProductsOverviewScreen");
+                }}
+              />
+            </HeaderButtons>
+          ),
+        }}
+      />
+
+      <ProductsStackNavigator.Screen
+        name="UsedTransactionScreen"
+        component={UsedTransactionScreen}
+        options={{
+          title: <Text style={styles.Header}>중고거래 글쓰기</Text>,
+
+          tabBarIcon: ({ focused }) => {
+            let iconName;
+
+            if (route.name === "UsedTransactionScreen") {
+              iconName = focused ? "" : "";
+            }
+            return <Ionicons name={iconName} size={25} />;
+          },
+
+          headerLeft: () => (
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+              <HeaderBackButton
+                onPress={() => {
+                  props.navigation.goBack();
                 }}
               />
             </HeaderButtons>

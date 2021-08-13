@@ -1,11 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const Screeen = (navigation) => {
-  console.log(navigation);
+const UsedTransactionScreen = () => {
   return (
     <View style={styles.screen}>
-      <Text style={{ fontSize: 30 }}>Screen</Text>
+      <Text style={{ fontSize: 30 }}>중고거래 글쓰기</Text>
     </View>
   );
 };
@@ -17,4 +16,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-export default Screeen;
+
+export default UsedTransactionScreen;
