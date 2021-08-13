@@ -1,5 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, Platform } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  Platform,
+  TouchableNativeFeedback,
+  View,
+} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -13,7 +19,7 @@ import ProductsOverviewScreen from "../screens/ProductsOverviewScreen";
 import ProductDetailScreeen from "../screens/ProductDetailScreen";
 import Screen from "../screens/Screen";
 import FavoriteScreen from "../screens/FavoriteScreen";
-import UsedTransactionScreen from "../screens/UsedTransactionScreen";
+import UsedTransactionScreen from "../screens/UsedTransaction";
 
 import { Ionicons } from "@expo/vector-icons";
 import MyCarrot from "../screens/MyCarrot";
@@ -124,6 +130,32 @@ export const ProductStackNavigator = (props) => {
                 }}
               />
             </HeaderButtons>
+          ),
+          headerRight: () => (
+            <View style={{ paddingRight: 20 }}>
+              <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                <View
+                  style={{
+                    borderRadius: 40,
+                    overflow: "hidden",
+                    justifyContent: "center",
+                  }}
+                >
+                  <TouchableNativeFeedback>
+                    <View>
+                      <Text
+                        style={{
+                          color: "orange",
+                          fontSize: 20,
+                        }}
+                      >
+                        완료
+                      </Text>
+                    </View>
+                  </TouchableNativeFeedback>
+                </View>
+              </HeaderButtons>
+            </View>
           ),
         }}
       />
