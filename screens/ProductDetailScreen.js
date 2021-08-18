@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   Text,
@@ -15,7 +15,7 @@ const ProductDetailScreeen = (props) => {
   const productTitle = props.route.params.productTitle;
   const productDescription = props.route.params.productDescription;
   const productPrice = props.route.params.productPrice;
-
+  
   return (
     <ScrollView style={styles.screen}>
       <Image style={styles.image} source={{ uri: productImage }} />
@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     paddingTop: 20,
     marginHorizontal: 15,
-    
   },
   ownerId: {
     paddingTop: 10,

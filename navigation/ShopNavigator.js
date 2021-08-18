@@ -1,4 +1,10 @@
-import React from "react";
+import React, {
+  createRef,
+  forwardRef,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   StyleSheet,
   Text,
@@ -27,11 +33,18 @@ import MyCarrot from "../screens/MyCarrot";
 const ProductsStackNavigator = createStackNavigator();
 
 export const ProductStackNavigator = (props) => {
+  // console.log(props);
+  const { setIsVisible } = props;
   return (
-    <ProductsStackNavigator.Navigator>
+    <ProductsStackNavigator.Navigator
+      screenOptions={({ route }) => {
+        // console.log(route); /////////////////////
+        // console.log(params.submit);
+      }}
+    >
       <ProductsStackNavigator.Screen
         name="ProductsOverviewScreen"
-        component={ProductsOverviewScreen}
+        // component={ProductsOverviewScreen}
         options={{
           title: <Text style={styles.Header}>흥해읍</Text>,
           headerRight: () => (
@@ -69,10 +82,20 @@ export const ProductStackNavigator = (props) => {
             </HeaderButtons>
           ),
         }}
-      />
+      >
+        {(props) => {
+          useEffect(() => {
+            console.log(props.route.name);
+          }, [props.route.name]);
+          // console.log(props.navigation);
+          return (
+            <ProductsOverviewScreen {...props} setIsVisible={setIsVisible} />
+          );
+        }}
+      </ProductsStackNavigator.Screen>
       <ProductsStackNavigator.Screen
         name="ProductDetailScreen"
-        component={ProductDetailScreeen}
+        // component={ProductDetailScreeen}
         options={{
           tabBarIcon: ({ focused }) => {
             let iconName;
@@ -105,12 +128,16 @@ export const ProductStackNavigator = (props) => {
             </HeaderButtons>
           ),
         }}
-      />
+      >
+        {(props) => (
+          <ProductDetailScreeen {...props} setIsVisible={setIsVisible} />
+        )}
+      </ProductsStackNavigator.Screen>
 
       <ProductsStackNavigator.Screen
         name="UsedTransactionScreen"
         component={UsedTransactionScreen}
-        options={{
+        options={({ route, navigation }) => ({
           title: <Text style={styles.Header}>중고거래 글쓰기</Text>,
 
           tabBarIcon: ({ focused }) => {
@@ -131,38 +158,43 @@ export const ProductStackNavigator = (props) => {
               />
             </HeaderButtons>
           ),
-          headerRight: () => (
-            <View style={{ paddingRight: 20 }}>
-              <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                <View
-                  style={{
-                    borderRadius: 40,
-                    overflow: "hidden",
-                    justifyContent: "center",
-                  }}
-                >
-                  <TouchableNativeFeedback>
-                    <View>
-                      <Text
-                        style={{
-                          color: "orange",
-                          fontSize: 20,
-                        }}
-                      >
-                        완료
-                      </Text>
-                    </View>
-                  </TouchableNativeFeedback>
-                </View>
-              </HeaderButtons>
-            </View>
-          ),
-        }}
-      />
+          // headerRight: () => (
+          //   <View style={{ paddingRight: 20 }}>
+          //     <HeaderButtons HeaderButtonComponent={HeaderButton}>
+          //       <View
+          //         style={{
+          //           borderRadius: 50,
+          //           height: 50,
+          //           width: 50,
+          //           overflow: "hidden",
+          //           justifyContent: "center",
+          //         }}
+          //       >
+          //         <Item
+          //           title={<Text style={{ fontSize: 20 }}>완료</Text>}
+          //           color="orange"
+          //           onPress={() => {
+          //             route.params.submit();
+          //           }}
+          //         />
+          //       </View>
+          //     </HeaderButtons>
+          //   </View>
+          // ),
+        })}
+      ></ProductsStackNavigator.Screen>
     </ProductsStackNavigator.Navigator>
   );
 };
 
+// onPress={() => {
+// // console.log(route.params);
+// ////////////////////////////////////////////////
+// // this.props.navigation.getParam("submit");
+// // console.log(route);
+// route.param.submit;
+// // route.params.submit();
+// }}
 const MyCarrotsStacksNavigator = createStackNavigator();
 
 export const MyCarrotStackNavigator = () => {
@@ -249,12 +281,13 @@ export const ScreenStackNavigator = () => {
 const BottomTabsbNavigator = createMaterialBottomTabNavigator();
 
 export const BottomTabNavigator = () => {
+  const [isVisible, setIsVisible] = useState(true);
+
   return (
     <NavigationContainer>
       <BottomTabsbNavigator.Navigator
         screenOptions={({ route }) => ({
           headerShown: false,
-
           tabBarIcon: ({ focused }) => {
             let iconName;
 
@@ -273,17 +306,24 @@ export const BottomTabNavigator = () => {
             return <Ionicons name={iconName} size={25} />;
           },
         })}
-        barStyle={{ backgroundColor: "white" }}
+        barStyle={{
+          backgroundColor: "white",
+          display: isVisible ? "flex" : "none",
+        }}
         shifting={false}
         inactiveColor="black"
       >
         <BottomTabsbNavigator.Screen
           name="홈"
-          component={ProductStackNavigator}
           options={{
             tabBarLabel: "홈",
           }}
-        />
+        >
+          {(props) => (
+            <ProductStackNavigator {...props} setIsVisible={setIsVisible} />
+          )}
+        </BottomTabsbNavigator.Screen>
+
         <BottomTabsbNavigator.Screen
           name="동네생활"
           component={ScreenStackNavigator}
