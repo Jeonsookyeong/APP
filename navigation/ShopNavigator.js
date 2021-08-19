@@ -84,9 +84,9 @@ export const ProductStackNavigator = (props) => {
         }}
       >
         {(props) => {
-          useEffect(() => {
-            console.log(props.route.name);
-          }, [props.route.name]);
+          // useEffect(() => {
+          //   console.log(props.route.name);
+          // }, [props.route.name]);
           // console.log(props.navigation);
           return (
             <ProductsOverviewScreen {...props} setIsVisible={setIsVisible} />

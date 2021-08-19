@@ -8,9 +8,9 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { useSelector } from "react-redux";
 
 const ProductsOverviewScreen = (props) => {
-  useEffect(() => {
-    console.log(props.route.name);
-  }, [props.route.name]);
+  // useEffect(() => {
+  //   console.log(props.route.name);
+  // }, [props.route.name]);
 
   const products = useSelector((state) => state.products.availableProducts);
   
