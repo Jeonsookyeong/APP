@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import PRODUCTS from "../data/dummy-data";
+import { PRODUCTS } from "../data/dummy-data";
 import ProductItem from "../components/ProductItem";
 
 import ActionButton from "@logvinme/react-native-action-button";
@@ -27,6 +27,8 @@ const ProductsOverviewScreen = (props) => {
               title={itemData.item.title}
               createdAt={itemData.item.createdAt}
               price={itemData.item.price}
+              ///////////////
+              category={itemData.item.category}
               onSelect={() => {
                 // props.setIsVisible(false);
                 props.navigation.navigate("ProductDetailScreen", {

@@ -22,6 +22,7 @@ const ProductItem = (props) => {
             </View>
             <View style={styles.details}>
               <Text style={styles.title}>{props.title}</Text>
+              <Text style={styles.createdAt}>{props.category}</Text>
               <Text style={styles.createdAt}>{props.createdAt}</Text>
               <Text style={styles.price}>{props.price}</Text>
             </View>

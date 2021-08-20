@@ -13,8 +13,9 @@ export default (state = initialState, action) => {
       const newProduct = new Product(
         new Date().toString(),
         "sk",
-        new Date().toString(),
+        "*분전",
         action.productData.title,
+        action.productData.category,
         action.productData.imageUrl,
         action.productData.description,
         action.productData.price
@@ -26,3 +27,4 @@ export default (state = initialState, action) => {
   }
   return state;
 };
+// new Date().toString()

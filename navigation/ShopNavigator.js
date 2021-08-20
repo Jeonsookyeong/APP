@@ -26,6 +26,8 @@ import ProductDetailScreeen from "../screens/ProductDetailScreen";
 import Screen from "../screens/Screen";
 import FavoriteScreen from "../screens/FavoriteScreen";
 import UsedTransactionScreen from "../screens/UsedTransaction";
+import CategoryScreen from "../screens/CategoryScreen";
+import CategoryProductScreen from "../screens/CategoryProductScreen";
 
 import { Ionicons } from "@expo/vector-icons";
 import MyCarrot from "../screens/MyCarrot";
@@ -67,7 +69,10 @@ export const ProductStackNavigator = (props) => {
                     : "ios-menu-outline"
                 }
                 iconSize={30}
-                onPress={() => {}}
+                onPress={() => {
+                  props.navigation.navigate("CategoryScreen");
+                }}
+                //////////////
               />
               <Item
                 title="notice"
@@ -183,6 +188,62 @@ export const ProductStackNavigator = (props) => {
           // ),
         })}
       ></ProductsStackNavigator.Screen>
+
+      <ProductsStackNavigator.Screen
+        name="CategoryScreen"
+        // component={ProductDetailScreeen}
+        options={{
+          title: <Text style={styles.Header}>카테고리</Text>,
+          headerLeft: () => (
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+              <HeaderBackButton
+                tintColor="black"
+                onPress={() => {
+                  props.navigation.goBack();
+                }}
+              />
+            </HeaderButtons>
+          ),
+          headerRight: () => (
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+              <Item
+                title="search"
+                iconName={
+                  Platform.OS === "android"
+                    ? "md-search-outline"
+                    : "ios-search-outline"
+                }
+                iconSize={26}
+                onPress={() => {}}
+              />
+            </HeaderButtons>
+          ),
+        }}
+      >
+        {(props) => <CategoryScreen {...props} setIsVisible={setIsVisible} />}
+      </ProductsStackNavigator.Screen>
+
+      <ProductsStackNavigator.Screen
+        name="CategoryProductScreen"
+        // component={ProductDetailScreeen}
+        options={{
+          // title: <Text style={styles.Header}>카테고리</Text>,
+          headerLeft: () => (
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+              <HeaderBackButton
+                tintColor="black"
+                onPress={() => {
+                  props.navigation.goBack();
+                }}
+              />
+            </HeaderButtons>
+          ),
+        }}
+      >
+        {(props) => (
+          <CategoryProductScreen {...props} setIsVisible={setIsVisible} />
+        )}
+      </ProductsStackNavigator.Screen>
     </ProductsStackNavigator.Navigator>
   );
 };

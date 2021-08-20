@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const Screeen = (navigation) => {
+const Screen = (navigation) => {
   // console.log(navigation);
   return (
     <View style={styles.screen}>
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-export default Screeen;
+export default Screen;

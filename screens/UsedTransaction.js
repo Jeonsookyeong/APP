@@ -6,6 +6,7 @@ import {
   View,
   Text,
   Picker,
+  KeyboardAvoidingView,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import * as productsAction from "../store/actions/products";
@@ -36,6 +37,7 @@ const UsedTransactionScreen = (props) => {
         description
       )
     );
+    // props.navigation.goBack();
   }, [dispatch, imageUrl, title, category, price, description]);
 
   // useCallback(() => {
@@ -94,7 +96,7 @@ const UsedTransactionScreen = (props) => {
               color="orange"
               onPress={() => {
                 submitHandler();
-                props.navigation.goBack();
+                props.navigation.goBack(); /////////////////////////
               }}
             />
           </View>
@@ -129,7 +131,6 @@ const UsedTransactionScreen = (props) => {
       <View style={styles.category}>
         <Text />
         <Picker
-          placeholder="Select navigator app"
           selectedValue={category}
           onValueChange={(itemValue, itemIndex) => {
             console.log(itemValue);
