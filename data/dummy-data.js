@@ -1,5 +1,92 @@
 import Product from "../models/products";
-import Category from "../models/category"
+import Category from "../models/category";
+import Question from "../models/question";
+
+export const QUESTIONS = [
+  new Question(
+    "q1",
+    "우리동네질문",
+    "안녕하",
+    "흥해읍",
+    "포항 리플러스마트 포항사랑카드 사용 가능한가요??",
+    "3일 전"
+  ),
+  new Question(
+    "q2",
+    "우리동네질문",
+    "랄라",
+    "용흥동",
+    "하이로손 파는 약국이 있을까요??",
+    "4일 전"
+  ),
+  new Question(
+    "q3",
+    "우리동네질문",
+    "동네",
+    "장량동",
+    "장량동에 인터넷 설치 문의는 어디로 해야하나요?",
+    "3일 전"
+  ),
+  new Question(
+    "q4",
+    "동네사건사고",
+    "최강나가자",
+    "창포동",
+    "창포동 지갑 주우신 분??",
+    "3일 전"
+  ),
+  new Question(
+    "q5",
+    "둥네맛집",
+    "고기",
+    "흥해읍",
+    "뒷고기 맛집 추천해주세요!!",
+    "4일 전"
+  ),
+  new Question(
+    "q6",
+    "동네소식",
+    "빨강머리",
+    "장량동",
+    "혹시 초곡에 전자랜드 있을까요 정보 부탁드립니다.",
+    "3일 전"
+  ),
+
+  new Question(
+    "q7",
+    "분실/실종센터",
+    "헤헤",
+    "연일읍",
+    "포항도서관에서 에어팟 보신 분 있나요??",
+    "4일 전"
+  ),
+
+  new Question(
+    "q8",
+    "일상",
+    "예삐",
+    "학산동",
+    "포항에 코로나 자가진단 키트 파는 곳 있나요??",
+    "5일 전"
+  ),
+  new Question(
+    "q9",
+    "해주세요",
+    "베스트",
+    "흥해읍",
+    "치킨집별 베스트추천 메뉴 부탁드려요",
+    "6일 전"
+  ),
+  new Question(
+    "q10",
+    "취미생활",
+    "사랑",
+    "우현동",
+    "첼로 배울 곳 아시는 분 추천 해주세요!!",
+    "1주 전"
+  ),
+  
+];
 
 export const CATEGORIES = [
   new Category("c1", "디지털기기", "tv-outline"),

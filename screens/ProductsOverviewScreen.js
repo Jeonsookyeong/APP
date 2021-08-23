@@ -13,9 +13,9 @@ const ProductsOverviewScreen = (props) => {
   // }, [props.route.name]);
 
   const products = useSelector((state) => state.products.availableProducts);
-  
+
   return (
-    <View style={{ flex: 1, backgroundColor: "#f3f3f3" }}>
+    <View style={{ flex: 1 }}>
       {
         /* Rest of the app comes ABOVE the action button component !*/
         <FlatList

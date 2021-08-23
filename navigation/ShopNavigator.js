@@ -28,6 +28,7 @@ import FavoriteScreen from "../screens/FavoriteScreen";
 import UsedTransactionScreen from "../screens/UsedTransaction";
 import CategoryScreen from "../screens/CategoryScreen";
 import CategoryProductScreen from "../screens/CategoryProductScreen";
+import QScreen from "../screens/QScreen";
 
 import { Ionicons } from "@expo/vector-icons";
 import MyCarrot from "../screens/MyCarrot";
@@ -289,6 +290,53 @@ export const MyCarrotStackNavigator = () => {
     </MyCarrotsStacksNavigator.Navigator>
   );
 };
+
+const QScreensStackNavigator = createStackNavigator();
+
+export const QScreenStackNavigator = () => {
+  return (
+    <QScreensStackNavigator.Navigator>
+      <QScreensStackNavigator.Screen
+        name="Screen"
+        component={QScreen}
+        options={{
+          title: <Text style={styles.Header}>흥해읍</Text>,
+          headerRight: () => (
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+              <Item
+                title="search"
+                iconName={
+                  Platform.OS === "android"
+                    ? "md-search-outline"
+                    : "ios-search-outline"
+                }
+                iconSize={26}
+                onPress={() => {}}
+              />
+              <Item /////////////////
+                title="category"
+                iconName={"options-outline"}
+                iconSize={30}
+                onPress={() => {}}
+              />
+              <Item
+                title="notice"
+                iconName={
+                  Platform.OS === "android"
+                    ? "md-notifications-outline"
+                    : "ios-notifications-outline"
+                }
+                iconSize={26}
+                onPress={() => {}}
+              />
+            </HeaderButtons>
+          ),
+        }}
+      />
+    </QScreensStackNavigator.Navigator>
+  );
+};
+
 const ScreensStackNavigator = createStackNavigator();
 
 export const ScreenStackNavigator = () => {
@@ -387,7 +435,7 @@ export const BottomTabNavigator = () => {
 
         <BottomTabsbNavigator.Screen
           name="동네생활"
-          component={ScreenStackNavigator}
+          component={QScreenStackNavigator}
           options={{
             tabBarLabel: "동네생활",
           }}

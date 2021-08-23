@@ -6,9 +6,11 @@ import ShopNavigator from "./navigation/ShopNavigator";
 // import ShopNavigator2 from "./navigation/ShopNavigator2"
 
 import productsReducer from "./store/reducers/products";
+import questionReducer from "./store/reducers/questions";
 
 const rootReducer = combineReducers({
   products: productsReducer,
+  questions: questionReducer,
 });
 
 const store = createStore(rootReducer);

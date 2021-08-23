@@ -16,6 +16,14 @@ const CategoryProductScreen = (props) => {
   const categoryProducts = products.filter(
     (products) => products.category === category
   );
+
+  if (categoryProducts.length === 0) {
+    return (
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text style={{ fontSize: 20 }}>No products found</Text>
+      </View>
+    );
+  }
   return (
     <FlatList
       data={categoryProducts}
