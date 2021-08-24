@@ -8,8 +8,9 @@ import { Ionicons } from "@expo/vector-icons";
 
 import ProductItem from "../components/ProductItem";
 import { useSelector } from "react-redux";
+import { usePlatformProps } from "native-base";
 
-const QScreen = (navigation) => {
+const QuestionOverviewScreen = (props) => {
   // console.log(navigation);
   const questions = useSelector((state) => state.questions.availableQuestions);
 
@@ -47,6 +48,9 @@ const QScreen = (navigation) => {
         renderIcon={() => (
           <Ionicons name="pencil" style={styles.actionButtonIcon} />
         )}
+        onPress={() => {
+          props.navigation.navigate("QuestionScreen");
+        }}
       ></ActionButton>
     </View>
   );
@@ -64,4 +68,5 @@ const styles = StyleSheet.create({
     color: "white",
   },
 });
-export default QScreen;
+export default QuestionOverviewScreen;
+

@@ -28,7 +28,8 @@ import FavoriteScreen from "../screens/FavoriteScreen";
 import UsedTransactionScreen from "../screens/UsedTransaction";
 import CategoryScreen from "../screens/CategoryScreen";
 import CategoryProductScreen from "../screens/CategoryProductScreen";
-import QScreen from "../screens/QScreen";
+import QuestionOverviewScreen from "../screens/QuestionOverviewScreen";
+import QuestionScreen from "../screens/QuestionScreen";
 
 import { Ionicons } from "@expo/vector-icons";
 import MyCarrot from "../screens/MyCarrot";
@@ -291,49 +292,74 @@ export const MyCarrotStackNavigator = () => {
   );
 };
 
-const QScreensStackNavigator = createStackNavigator();
+const QuestionOverviewScreensStackNavigator = createStackNavigator();
 
-export const QScreenStackNavigator = () => {
+export const QuestionOverviewScreenStackNavigator = (props) => {
   return (
-    <QScreensStackNavigator.Navigator>
-      <QScreensStackNavigator.Screen
-        name="Screen"
-        component={QScreen}
-        options={{
-          title: <Text style={styles.Header}>흥해읍</Text>,
-          headerRight: () => (
-            <HeaderButtons HeaderButtonComponent={HeaderButton}>
-              <Item
-                title="search"
-                iconName={
-                  Platform.OS === "android"
-                    ? "md-search-outline"
-                    : "ios-search-outline"
-                }
-                iconSize={26}
-                onPress={() => {}}
-              />
-              <Item /////////////////
-                title="category"
-                iconName={"options-outline"}
-                iconSize={30}
-                onPress={() => {}}
-              />
-              <Item
-                title="notice"
-                iconName={
-                  Platform.OS === "android"
-                    ? "md-notifications-outline"
-                    : "ios-notifications-outline"
-                }
-                iconSize={26}
-                onPress={() => {}}
-              />
-            </HeaderButtons>
-          ),
-        }}
-      />
-    </QScreensStackNavigator.Navigator>
+    <QuestionOverviewScreensStackNavigator.Navigator>
+      <QuestionOverviewScreensStackNavigator.Group>
+        <QuestionOverviewScreensStackNavigator.Screen
+          name="QuestionOverviewScreen"
+          component={QuestionOverviewScreen}
+          options={{
+            title: <Text style={styles.Header}>흥해읍</Text>,
+            headerRight: () => (
+              <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                <Item
+                  title="search"
+                  iconName={
+                    Platform.OS === "android"
+                      ? "md-search-outline"
+                      : "ios-search-outline"
+                  }
+                  iconSize={26}
+                  onPress={() => {}}
+                />
+                <Item /////////////////
+                  title="category"
+                  iconName={"options-outline"}
+                  iconSize={30}
+                  onPress={() => {}}
+                />
+                <Item
+                  title="notice"
+                  iconName={
+                    Platform.OS === "android"
+                      ? "md-notifications-outline"
+                      : "ios-notifications-outline"
+                  }
+                  iconSize={26}
+                  onPress={() => {}}
+                />
+              </HeaderButtons>
+            ),
+          }}
+        />
+      </QuestionOverviewScreensStackNavigator.Group>
+
+      <QuestionOverviewScreensStackNavigator.Group
+        screenOptions={{ presentation: "modal" }}
+      >
+        <QuestionOverviewScreensStackNavigator.Screen
+          name="QuestionScreen"
+          component={QuestionScreen}
+          options={({ route, navigation }) => ({
+            title: <Text style={styles.Header}>동네생활 글쓰기</Text>,
+            headerLeft: () => (
+              <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                <HeaderBackButton
+                  onPress={() => {
+                    ///////////////////////////////////////////////////  ?
+                    // props.navigation.goBack();
+                    props.navigation.navigate("QuestionOverviewScreen");
+                  }}
+                />
+              </HeaderButtons>
+            ),
+          })}
+        />
+      </QuestionOverviewScreensStackNavigator.Group>
+    </QuestionOverviewScreensStackNavigator.Navigator>
   );
 };
 
@@ -435,7 +461,7 @@ export const BottomTabNavigator = () => {
 
         <BottomTabsbNavigator.Screen
           name="동네생활"
-          component={QScreenStackNavigator}
+          component={QuestionOverviewScreenStackNavigator}
           options={{
             tabBarLabel: "동네생활",
           }}
