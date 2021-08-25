@@ -12,9 +12,10 @@ const QCategoryScreen = (props) => {
         category={itemData.item.category}
         image={itemData.item.image}
         onSelect={() => {
-          //   props.navigation.navigate("CategoryProductScreen", {
-          //     category: itemData.item.category,
-          //   });
+          props.navigation.navigate("CategoryQuestionScreen", {
+            category: itemData.item.category,
+            image: itemData.item.image,
+          });
         }}
       />
     );

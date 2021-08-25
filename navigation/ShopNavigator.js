@@ -373,7 +373,7 @@ export const QuestionOverviewScreenStackNavigator = (props) => {
                 <HeaderBackButton
                   tintColor="black"
                   onPress={() => {
-                    props.navigation.goBack();
+                    props.navigation.navigate("QuestionOverviewScreen");
                   }}
                 />
               </HeaderButtons>
@@ -400,9 +400,9 @@ export const QuestionOverviewScreenStackNavigator = (props) => {
             headerLeft: () => (
               <HeaderButtons HeaderButtonComponent={HeaderButton}>
                 <HeaderBackButton
-                  tintColor="black"
+                  tintColor="white"
                   onPress={() => {
-                    props.navigation.goBack();
+                    props.navigation.navigate("QCategoryScreen");
                   }}
                 />
               </HeaderButtons>
