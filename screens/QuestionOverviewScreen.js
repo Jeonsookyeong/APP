@@ -8,7 +8,6 @@ import { Ionicons } from "@expo/vector-icons";
 
 import ProductItem from "../components/ProductItem";
 import { useSelector } from "react-redux";
-import { usePlatformProps } from "native-base";
 
 const QuestionOverviewScreen = (props) => {
   // console.log(navigation);

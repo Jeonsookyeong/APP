@@ -1,10 +1,7 @@
-// import PRODUCTS from "../../data/dummy-data";
-// import Product from "../../models/products";
-
 import { QUESTIONS } from "../../data/dummy-data";
 import Question from "../../models/question";
 
-// import { CREATE_PRODUCT } from "../actions/products";
+
 import { CREATE_QUESTION } from "../actions/questions";
 
 const initialState = {

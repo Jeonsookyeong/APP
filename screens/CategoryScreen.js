@@ -1,5 +1,4 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 
 import { CATEGORIES } from "../data/dummy-data";
@@ -29,11 +28,4 @@ const CategoryScreen = (props) => {
   );
 };
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 export default CategoryScreen;

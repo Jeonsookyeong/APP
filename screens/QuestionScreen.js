@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   ScrollView,
   TextInput,
@@ -12,25 +12,29 @@ import { useDispatch } from "react-redux";
 // import * as productsAction from "../store/actions/products";
 import * as questionAction from "../store/actions/questions";
 
-
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
 
 const QuestionScreen = (props) => {
   const [category, setCategory] = useState("카테고리");
   const [description, setDescription] = useState("");
+  const [done, setDone] = useState(false);
 
+  //   useEffect(() => {
+  //     return () => {
+  //       if (description === "") {
+  //         setDone(false);
+  //       } else {
+  //         setDone(true);
+  //       }
+  //     };
+  //   }, [description]);
 
   const dispatch = useDispatch();
 
   const submitHandler = useCallback(() => {
     console.log("submitting");
-    dispatch(
-        questionAction.createQuestion(
-        category,
-        description
-      )
-    );
+    dispatch(questionAction.createQuestion(category, description));
     // props.navigation.goBack();
   }, [dispatch, category, description]);
 
@@ -49,7 +53,7 @@ const QuestionScreen = (props) => {
           >
             <Item
               title={<Text style={{ fontSize: 20 }}>완료</Text>}
-              //   color="orange"
+              color={done ? "black" : "grey"}
               onPress={() => {
                 submitHandler();
                 props.navigation.goBack(); /////////////////////////
@@ -70,9 +74,9 @@ const QuestionScreen = (props) => {
             console.log(itemValue);
             setCategory(itemValue);
           }}
-        //   mode={"dropdown"}
+          //   mode={"dropdown"}
         >
-          <Picker.Item label="게시글의 주제를 선택해주세요"  />
+          <Picker.Item label="게시글의 주제를 선택해주세요" />
           <Picker.Item label="우리동네질문" value="우리동네질문" />
           <Picker.Item label="동네사건사고" value="동네사건사고" />
           <Picker.Item label="동네맛집" value="동네맛집" />
@@ -97,7 +101,10 @@ const QuestionScreen = (props) => {
         style={styles.description}
         placeholder="흥해읍 근처 이웃과 우리 동네 관련된 질문이나 이야기를 해보세요."
         value={description}
-        onChangeText={(text) => setDescription(text)}
+        onChangeText={(text) => {
+          setDescription(text);
+          setDone(true);
+        }}
       />
     </ScrollView>
   );
@@ -113,6 +120,7 @@ const styles = StyleSheet.create({
   description: {
     marginHorizontal: 20,
     paddingTop: 20,
+
   },
 });
 

@@ -30,6 +30,8 @@ import CategoryScreen from "../screens/CategoryScreen";
 import CategoryProductScreen from "../screens/CategoryProductScreen";
 import QuestionOverviewScreen from "../screens/QuestionOverviewScreen";
 import QuestionScreen from "../screens/QuestionScreen";
+import QCategoryScreen from "../screens/QCategoryScreen";
+import CategoryQuestionScreen from "../screens/CategoryQuestionScreen";
 
 import { Ionicons } from "@expo/vector-icons";
 import MyCarrot from "../screens/MyCarrot";
@@ -319,7 +321,9 @@ export const QuestionOverviewScreenStackNavigator = (props) => {
                   title="category"
                   iconName={"options-outline"}
                   iconSize={30}
-                  onPress={() => {}}
+                  onPress={() => {
+                    props.navigation.navigate("QCategoryScreen");
+                  }}
                 />
                 <Item
                   title="notice"
@@ -358,6 +362,55 @@ export const QuestionOverviewScreenStackNavigator = (props) => {
             ),
           })}
         />
+
+        <QuestionOverviewScreensStackNavigator.Screen
+          name="QCategoryScreen"
+          // component={ProductDetailScreeen}
+          options={{
+            title: <Text style={styles.Header}>동네생활 주제목록</Text>,
+            headerLeft: () => (
+              <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                <HeaderBackButton
+                  tintColor="black"
+                  onPress={() => {
+                    props.navigation.goBack();
+                  }}
+                />
+              </HeaderButtons>
+            ),
+            headerRight: () => (
+              <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                <Item
+                  title="search"
+                  iconName={"options-outline"}
+                  iconSize={26}
+                  onPress={() => {}}
+                />
+              </HeaderButtons>
+            ),
+          }}
+        >
+          {(props) => <QCategoryScreen {...props} />}
+        </QuestionOverviewScreensStackNavigator.Screen>
+        <QuestionOverviewScreensStackNavigator.Screen
+          name="CategoryQuestionScreen"
+          // component={ProductDetailScreeen}
+          options={{
+            // title: <Text style={styles.Header}>카테고리</Text>,
+            headerLeft: () => (
+              <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                <HeaderBackButton
+                  tintColor="black"
+                  onPress={() => {
+                    props.navigation.goBack();
+                  }}
+                />
+              </HeaderButtons>
+            ),
+          }}
+        >
+          {(props) => <CategoryQuestionScreen {...props} />}
+        </QuestionOverviewScreensStackNavigator.Screen>
       </QuestionOverviewScreensStackNavigator.Group>
     </QuestionOverviewScreensStackNavigator.Navigator>
   );

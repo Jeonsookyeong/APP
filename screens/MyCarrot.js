@@ -82,35 +82,45 @@ const MyCarrot = (props) => {
       <View style={styles.settings}>
         <TouchableNativeFeedback>
           <View style={styles.setting}>
-            <Ionicons name="location-outline" size={30} />
+            <View style={{ paddingTop: 10 }}>
+              <Ionicons name="location-outline" size={30} />
+            </View>
             <Text style={styles.text}>내 동네 설정</Text>
           </View>
         </TouchableNativeFeedback>
 
         <TouchableNativeFeedback>
           <View style={styles.setting}>
-            <Ionicons name="locate-outline" size={30} />
+            <View style={{ paddingTop: 10 }}>
+              <Ionicons name="locate-outline" size={30} />
+            </View>
             <Text style={styles.text}>동네 인증하기</Text>
           </View>
         </TouchableNativeFeedback>
 
         <TouchableNativeFeedback>
           <View style={styles.setting}>
-            <Ionicons name="pricetag-outline" size={30} />
+            <View style={{ paddingTop: 10 }}>
+              <Ionicons name="pricetag-outline" size={30} />
+            </View>
             <Text style={styles.text}>키워드 알림</Text>
           </View>
         </TouchableNativeFeedback>
 
         <TouchableNativeFeedback>
           <View style={styles.setting}>
-            <Ionicons name="grid-outline" size={30} />
+            <View style={{ paddingTop: 10 }}>
+              <Ionicons name="grid-outline" size={30} />
+            </View>
             <Text style={styles.text}>모아보기</Text>
           </View>
         </TouchableNativeFeedback>
 
         <TouchableNativeFeedback>
           <View style={styles.setting}>
-            <Ionicons name="options-outline" size={30} />
+            <View style={{ paddingTop: 10 }}>
+              <Ionicons name="options-outline" size={30} />
+            </View>
             <Text style={styles.text}>관심 카테고리 설정</Text>
           </View>
         </TouchableNativeFeedback>
@@ -119,21 +129,27 @@ const MyCarrot = (props) => {
       <View style={styles.short}>
         <TouchableNativeFeedback>
           <View style={styles.setting}>
-            <Ionicons name="create-outline" size={30} />
+            <View style={{ paddingTop: 10 }}>
+              <Ionicons name="create-outline" size={30} />
+            </View>
             <Text style={styles.text}>동네생활 글</Text>
           </View>
         </TouchableNativeFeedback>
 
         <TouchableNativeFeedback>
           <View style={styles.setting}>
-            <Ionicons name="chatbubble-ellipses-outline" size={30} />
+            <View style={{ paddingTop: 10 }}>
+              <Ionicons name="chatbubble-ellipses-outline" size={30} />
+            </View>
             <Text style={styles.text}>동네생활 댓글</Text>
           </View>
         </TouchableNativeFeedback>
 
         <TouchableNativeFeedback>
           <View style={styles.setting}>
-            <Ionicons name="star-outline" size={30} />
+            <View style={{ paddingTop: 10 }}>
+              <Ionicons name="star-outline" size={30} />
+            </View>
             <Text style={styles.text}>동네생활 주제 목록</Text>
           </View>
         </TouchableNativeFeedback>
@@ -142,21 +158,27 @@ const MyCarrot = (props) => {
       <View style={styles.short}>
         <TouchableNativeFeedback>
           <View style={styles.setting}>
-            <Ionicons name="create-outline" size={30} />
+            <View style={{ paddingTop: 10 }}>
+              <Ionicons name="create-outline" size={30} />
+            </View>
             <Text style={styles.text}>비즈프로필 만들기</Text>
           </View>
         </TouchableNativeFeedback>
 
         <TouchableNativeFeedback>
           <View style={styles.setting}>
-            <Ionicons name="chatbubble-ellipses-outline" size={30} />
+            <View style={{ paddingTop: 10 }}>
+              <Ionicons name="chatbubble-ellipses-outline" size={30} />
+            </View>
             <Text style={styles.text}>동네홍보 글</Text>
           </View>
         </TouchableNativeFeedback>
 
         <TouchableNativeFeedback>
           <View style={styles.setting}>
-            <Ionicons name="star-outline" size={30} />
+            <View style={{ paddingTop: 10 }}>
+              <Ionicons name="star-outline" size={30} />
+            </View>
             <Text style={styles.text}>지역광고</Text>
           </View>
         </TouchableNativeFeedback>
@@ -165,35 +187,45 @@ const MyCarrot = (props) => {
       <View style={styles.long}>
         <TouchableNativeFeedback>
           <View style={styles.setting}>
-            <Ionicons name="mail-outline" size={30} />
+            <View style={{ paddingTop: 10 }}>
+              <Ionicons name="mail-outline" size={30} />
+            </View>
             <Text style={styles.text}>친구초대</Text>
           </View>
         </TouchableNativeFeedback>
 
         <TouchableNativeFeedback>
           <View style={styles.setting}>
-            <Ionicons name="share-social-outline" size={30} />
+            <View style={{ paddingTop: 10 }}>
+              <Ionicons name="share-social-outline" size={30} />
+            </View>
             <Text style={styles.text}>당근마켓 공유</Text>
           </View>
         </TouchableNativeFeedback>
 
         <TouchableNativeFeedback>
           <View style={styles.setting}>
-            <Ionicons name="mic-outline" size={30} />
+            <View style={{ paddingTop: 10 }}>
+              <Ionicons name="mic-outline" size={30} />
+            </View>
             <Text style={styles.text}>공지사항</Text>
           </View>
         </TouchableNativeFeedback>
 
         <TouchableNativeFeedback>
           <View style={styles.setting}>
-            <Ionicons name="headset-outline" size={30} />
+            <View style={{ paddingTop: 10 }}>
+              <Ionicons name="headset-outline" size={30} />
+            </View>
             <Text style={styles.text}>자주 묻는 질문</Text>
           </View>
         </TouchableNativeFeedback>
 
         <TouchableNativeFeedback>
           <View style={styles.setting}>
-            <Ionicons name="settings-outline" size={30} />
+            <View style={{ paddingTop: 10 }}>
+              <Ionicons name="settings-outline" size={30} />
+            </View>
             <Text style={styles.text}>앱 설정</Text>
           </View>
         </TouchableNativeFeedback>
@@ -259,7 +291,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   text: {
-    paddingTop: 5,
+    paddingTop: 15, /////////////////////////
     fontSize: 16,
     paddingHorizontal: 10,
   },
