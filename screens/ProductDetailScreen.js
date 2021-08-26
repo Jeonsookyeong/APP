@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import {
   View,
   Text,
@@ -9,13 +9,59 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import HeaderButton from "../components/HeaderButton";
+
+import { useDispatch, useSelector } from "react-redux";
+import { favoriteProduct } from "../store/actions/products";
+
 const ProductDetailScreeen = (props) => {
   const productImage = props.route.params.productImage;
   const productOwnerId = props.route.params.productOwnerId;
   const productTitle = props.route.params.productTitle;
   const productDescription = props.route.params.productDescription;
   const productPrice = props.route.params.productPrice;
-  
+  const productId = props.route.params.productId;
+
+  const dispatch = useDispatch();
+
+  const favoriteProductHandler = useCallback(() => {
+    dispatch(favoriteProduct(productId));
+  }, [dispatch, productId]);
+
+  const currentProductIsFavorite = useSelector((state) =>
+    state.products.favoriteProducts.some((product) => product.id === productId)
+  );
+
+  props.navigation.setOptions({
+    headerRight: () => (
+      <View>
+        <HeaderButtons HeaderButtonComponent={HeaderButton}>
+          <Item
+            title="favorite"
+            iconName={currentProductIsFavorite ? "heart" : "heart-outline"}
+            iconSize={26}
+            color="white"
+            onPress={favoriteProductHandler}
+          />
+          <Item
+            title="share"
+            iconName={"share-social-outline"}
+            iconSize={30}
+            color="white"
+            onPress={() => {}}
+          />
+          <Item
+            title="vertical"
+            iconName={"ellipsis-vertical"}
+            iconSize={30}
+            color="white"
+            onPress={() => {}}
+          />
+        </HeaderButtons>
+      </View>
+    ),
+  });
   return (
     <ScrollView style={styles.screen}>
       <Image style={styles.image} source={{ uri: productImage }} />

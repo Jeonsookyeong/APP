@@ -1,20 +1,38 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
+import { useSelector } from "react-redux";
 
-const FavoriteScreen = () => {
+import ProductItem from "../components/ProductItem";
+
+const FavoriteScreen = (props) => {
+  const favProducts = useSelector((state) => state.products.favoriteProducts);
   return (
-    <View style={styles.screen}>
-      <Text style={{ fontSize: 30 }}>Favorite Screen</Text>
-    </View>
+    <FlatList
+      data={favProducts}
+      keyExtractor={(item) => item.id}
+      renderItem={(itemData) => (
+        <ProductItem
+          image={itemData.item.imageUrl}
+          title={itemData.item.title}
+          createdAt={itemData.item.createdAt}
+          price={itemData.item.price}
+          category={itemData.item.category}
+          onSelect={() => {
+            props.navigation.navigate("ProductDetailScreen", {
+              productImage: itemData.item.imageUrl,
+              productOwnerId: itemData.item.ownerId,
+              productTitle: itemData.item.title,
+              productDescription: itemData.item.description,
+              productPrice: itemData.item.price,
+              productId: itemData.item.id,
+            });
+          }}
+        ></ProductItem>
+      )}
+    />
   );
 };
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+const styles = StyleSheet.create({});
 
 export default FavoriteScreen;

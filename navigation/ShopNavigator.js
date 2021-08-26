@@ -9,8 +9,6 @@ import {
   StyleSheet,
   Text,
   Platform,
-  TouchableNativeFeedback,
-  View,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -122,6 +120,9 @@ export const ProductStackNavigator = (props) => {
               <HeaderBackButton
                 tintColor="white"
                 onPress={() => {
+                  // console.log(props.navigation);
+                  // this.props.navigator.pop() 
+                  ///////////////////////////////////////////////////////////////////
                   props.navigation.goBack();
                 }}
               />

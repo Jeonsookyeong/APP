@@ -1,7 +1,6 @@
 import { QUESTIONS } from "../../data/dummy-data";
 import Question from "../../models/question";
 
-
 import { CREATE_QUESTION } from "../actions/questions";
 
 const initialState = {

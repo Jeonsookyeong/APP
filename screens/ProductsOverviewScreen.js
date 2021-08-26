@@ -37,6 +37,7 @@ const ProductsOverviewScreen = (props) => {
                   productTitle: itemData.item.title,
                   productDescription: itemData.item.description,
                   productPrice: itemData.item.price,
+                  productId: itemData.item.id,
                 });
               }}
             ></ProductItem>
