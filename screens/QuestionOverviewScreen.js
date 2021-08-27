@@ -29,13 +29,13 @@ const QuestionOverviewScreen = (props) => {
               createdAt={itemData.item.createdAt}
               onSelect={() => {
                 // props.setIsVisible(false);
-                // props.navigation.navigate("ProductDetailScreen", {
-                //   productImage: itemData.item.imageUrl,
-                //   productOwnerId: itemData.item.ownerId,
-                //   productTitle: itemData.item.title,
-                //   productDescription: itemData.item.description,
-                //   productPrice: itemData.item.price,
-                // });
+                props.navigation.navigate("QuestionDetailScreen", {
+                  questionCategory: itemData.item.category,
+                  questionDescription: itemData.item.description,
+                  questionOwnerId: itemData.item.ownerId,
+                  questionLocation: itemData.item.location,
+                  questionCreatedAt: itemData.item.createdAt,
+                });
               }}
             ></QuestionItem>
           )}

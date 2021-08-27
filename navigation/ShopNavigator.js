@@ -5,11 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import {
-  StyleSheet,
-  Text,
-  Platform,
-} from "react-native";
+import { StyleSheet, Text, Platform } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -30,6 +26,7 @@ import QuestionOverviewScreen from "../screens/QuestionOverviewScreen";
 import QuestionScreen from "../screens/QuestionScreen";
 import QCategoryScreen from "../screens/QCategoryScreen";
 import CategoryQuestionScreen from "../screens/CategoryQuestionScreen";
+import QuestionDetailScreen from "../screens/QuestionDetailScreen";
 
 import { Ionicons } from "@expo/vector-icons";
 import MyCarrot from "../screens/MyCarrot";
@@ -121,7 +118,7 @@ export const ProductStackNavigator = (props) => {
                 tintColor="white"
                 onPress={() => {
                   // console.log(props.navigation);
-                  // this.props.navigator.pop() 
+                  // this.props.navigator.pop()
                   ///////////////////////////////////////////////////////////////////
                   props.navigation.goBack();
                 }}
@@ -298,6 +295,8 @@ export const MyCarrotStackNavigator = () => {
 const QuestionOverviewScreensStackNavigator = createStackNavigator();
 
 export const QuestionOverviewScreenStackNavigator = (props) => {
+  const [off, setOff] = useState(true);
+
   return (
     <QuestionOverviewScreensStackNavigator.Navigator>
       <QuestionOverviewScreensStackNavigator.Group>
@@ -340,6 +339,51 @@ export const QuestionOverviewScreenStackNavigator = (props) => {
             ),
           }}
         />
+
+        <ProductsStackNavigator.Screen
+          name="QuestionDetailScreen"
+          // component={QuestionDetailScreen}
+          options={{
+            headerTitle: "",
+            headerLeft: () => (
+              <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                <HeaderBackButton
+                  onPress={() => {
+                    // console.log(props.navigation);
+                    // this.props.navigator.pop()
+
+                    // props.navigation.goBack();
+                    props.navigation.navigate("QuestionOverviewScreen");
+                  }}
+                />
+              </HeaderButtons>
+            ),
+            headerRight: () => (
+              <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                <Item
+                  title="notifications"
+                  iconName={off ? "notifications-off-outline" : "notifications"}
+                  iconSize={26}
+                  onPress={() => setOff(!off)}
+                />
+                <Item /////////////////
+                  title="share"
+                  iconName={"share-social-outline"}
+                  iconSize={30}
+                  onPress={() => {}}
+                />
+                <Item
+                  title="notice"
+                  iconName={"ellipsis-vertical"}
+                  iconSize={26}
+                  onPress={() => {}}
+                />
+              </HeaderButtons>
+            ),
+          }}
+        >
+          {(props) => <QuestionDetailScreen {...props} />}
+        </ProductsStackNavigator.Screen>
       </QuestionOverviewScreensStackNavigator.Group>
 
       <QuestionOverviewScreensStackNavigator.Group
